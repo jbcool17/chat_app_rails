@@ -1,13 +1,13 @@
 class Message < ApplicationRecord
 	belongs_to :user
-  	belongs_to :channel
+	belongs_to :channel
 
-  	before_create :set_time
+	before_create :set_time
 
 
-  	private
+	private
 
-  	def set_time
-  		self.date = Time.now
-  	end
+	def set_time
+		self.date = Time.now
+	end
 end
