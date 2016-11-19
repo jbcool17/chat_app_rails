@@ -14,7 +14,7 @@ class User < ApplicationRecord
     color = '#%06x' % (rand * 0xffffff)
     min_color_num = color.scan(/\d/).map(&:to_i).min || 0
 
-    while ( User.colors.include?(color) ||  min_color_num < 4 ) do
+    while ( User.colors.include?(color) ||  min_color_num < 5 ) do
       color = '#%06x' % (rand * 0xffffff)
       min_color_num = color.scan(/\d/).map(&:to_i).min || 0
       puts min_color_num

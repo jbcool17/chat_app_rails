@@ -18,6 +18,7 @@
         <td><%= channel.name %></td>
         <td><%= channel.messages.count %> </td>
         <td><%= Channel.users(channel.name).count %> </td>
+        <td><%= link_to "Chat", chat_path(channel, channel.users.first)%></td>
         <td><%= link_to 'Show', channel %></td>
         <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
         <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

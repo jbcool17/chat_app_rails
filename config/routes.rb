@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # get 'chat/show'
+  get '/chat/:channel/:user', to: 'chat#show', as: 'chat'
+
   resources :users
   resources :messages
   resources :channels
