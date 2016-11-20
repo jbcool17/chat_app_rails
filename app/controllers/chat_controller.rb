@@ -6,6 +6,13 @@ class ChatController < ApplicationController
   end
 
   def enter_chat
+    channel = Channel.find params[:channels]
+    user = User.find params[:users]
+
+    Message.create message: "#{user.name} HAS ENTERED THE CHANNEL!",
+                    user_id: User.first.id,
+                    channel_id: channel.id
+
     redirect_to chat_path(params[:channels], params[:users])
   end
 
