@@ -10,5 +10,12 @@
   <%= @user.color %>
 </p>
 
+<ul class="channels">
+  <% @user.channels.each do |c| %>
+    <li><%= c.name %></li>
+  <% end %>
+</ul>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -25,17 +25,15 @@
 
   <div class="message">
     <%= f.label :message %>
-    <%= f.text_area :message %>
+    <%= f.text_field :message %>
   </div>
 
   <div class="user">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id, value: @user.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
   </div>
 
   <div class="channel">
-    <%= f.label :channel_id %>
-    <%= f.number_field :channel_id, value: @channel.id %>
+    <%= f.hidden_field :channel_id, value: @channel.id %>
   </div>
 
   <div class="actions">
@@ -44,3 +42,5 @@
 <% end %>
 
 </div>
+<hr>
+<%= link_to 'Home', root_path %>
