@@ -9,6 +9,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <div><%= link_to "Home", root_path %> | <%= link_to "Users", users_path %> | <%= link_to "Channels", channels_path %> | <%= link_to "Messages", messages_path %></div>
+    </nav>
+    <hr>
+      <%= yield %>
+    <hr>
+    <footer>
+
+        Website.
+    </footer>
   </body>
 </html>

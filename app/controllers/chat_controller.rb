@@ -5,11 +5,11 @@ class ChatController < ApplicationController
     @users = User.all
   end
 
-  def create
+  def enter_chat
     redirect_to chat_path(params[:channels], params[:users])
   end
 
-  def show
+  def chat
     @channel = Channel.find(params[:channel])
     @user = User.find(params[:user])
     @messages = @channel.messages.sort_by &:date
