@@ -29,3 +29,11 @@
     <%= f.submit %>
   <% end %>
 </div>
+
+
+<script>
+  $("#chat-window").animate({ scrollTop: $("#chat-window")[0].scrollHeight }, "fast");
+
+  $("#message_message").focus();
+  $("#message_message").select();
+</script>
