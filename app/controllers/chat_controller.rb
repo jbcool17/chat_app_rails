@@ -1,4 +1,5 @@
 class ChatController < ApplicationController
+  before_action :setup_chat, only: [:chat, :enter_chat]
 
   def index
     @channels = Channel.all
@@ -6,14 +7,11 @@ class ChatController < ApplicationController
   end
 
   def enter_chat
-    channel = Channel.find params[:channels]
-    user = User.find params[:users]
-
-    Message.create message: "#{user.name} HAS ENTERED THE CHANNEL!",
+    Message.create message: "#{@user.name} HAS ENTERED THE CHANNEL!",
                     user_id: User.first.id,
-                    channel_id: channel.id
+                    channel_id: @channel.id
 
-    redirect_to chat_path(params[:channels], params[:users])
+    redirect_to chat_path(@channel, @user)
   end
 
   def chat
@@ -24,4 +22,14 @@ class ChatController < ApplicationController
     @message = Message.new
 
   end
+
+  private
+
+  def setup_chat
+    @channel = Channel.find(params[:channel])
+    @user = User.find(params[:user])
+    @messages = @channel.messages.sort_by &:date
+  end
+
+
 end

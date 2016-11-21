@@ -3,15 +3,15 @@
 
 <form action='/chat', method='post'>
   <input type="hidden" name="authenticity_token" value="token_value">
-  <label for="users">USER: </label>
-  <select name="users" id="users">
+  <label for="user">USER: </label>
+  <select name="user" id="user">
     <% @users.each do |u| %>
       <option value=<%= u.id %>><%= u.name %></option>
     <% end %>
   </select>
 
-  <label for="channels">CHANNELS: </label>
-  <select name="channels" id="channels">
+  <label for="channel">CHANNELS: </label>
+  <select name="channel" id="channel">
     <% @channels.each do |c| %>
       <option value=<%= c.id %>><%= c.name %></option>
     <% end %>
