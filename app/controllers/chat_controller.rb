@@ -1,6 +1,6 @@
 class ChatController < ApplicationController
   before_action :set_user, only: [:user_sign_in, :user_home]
-  before_action :setup_chat, only: [:channel_sign_in, :channel]
+  before_action :setup_channel, only: [:channel_sign_in, :channel]
 
 # User Can Sign In
   def index
@@ -40,7 +40,7 @@ class ChatController < ApplicationController
     @user = User.find(params[:user])
   end
 
-  def setup_chat
+  def setup_channel
     @channel = Channel.find(params[:channel])
     @user = User.find(session[:current_user])
     @messages = @channel.messages.sort_by &:date
