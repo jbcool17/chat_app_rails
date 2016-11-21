@@ -1,0 +1,12 @@
+<h3 style="background-color: <%= @user.color %>">Hello <%= @user.name %>, Select a Channel to join.</h3>
+
+<form action='/chat/channel-sign-in', method='post'>
+  <input type="hidden" name="authenticity_token" value="token_value">
+  <label for="channel">CHANNELS: </label>
+  <select name="channel" id="channel">
+    <% @channels.each do |c| %>
+      <option value=<%= c.id %>><%= c.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Enter Channel">
+</form>

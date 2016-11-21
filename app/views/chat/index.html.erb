@@ -1,7 +1,6 @@
-<h1>Welcome to Chap App - Rails Version</h1>
 
-
-<form action='/chat', method='post'>
+<h3>Select a User to sign in.</h3>
+<form action='/chat/user-sign-in', method='post'>
   <input type="hidden" name="authenticity_token" value="token_value">
   <label for="user">USER: </label>
   <select name="user" id="user">
@@ -10,11 +9,5 @@
     <% end %>
   </select>
 
-  <label for="channel">CHANNELS: </label>
-  <select name="channel" id="channel">
-    <% @channels.each do |c| %>
-      <option value=<%= c.id %>><%= c.name %></option>
-    <% end %>
-  </select>
-  <input type="submit" value="Enter Chat">
+  <input type="submit" value="Enter">
 </form>

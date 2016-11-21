@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root 'chat#index'
 
-  get '/chat/:channel/:user', to: 'chat#chat', as: 'chat'
-  get '/chat', to: 'chat#index'
-  post '/chat', to: 'chat#enter_chat'
+  post '/chat/user-sign-in', to: 'chat#user_sign_in', as: 'user_sign_in'
+  get '/chat/:user', to: 'chat#user_home', as: 'user_home'
+
+  post '/chat/channel-sign-in', to: 'chat#channel_sign_in', as: 'channel_sign_in'
+  get '/chat/:channel/:user', to: 'chat#channel', as: 'channel'
+
 
   resources :users
   resources :messages

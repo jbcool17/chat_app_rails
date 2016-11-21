@@ -1,33 +1,48 @@
 class ChatController < ApplicationController
-  before_action :setup_chat, only: [:chat, :enter_chat]
+  before_action :set_user, only: [:user_sign_in, :user_home]
+  before_action :setup_chat, only: [:channel_sign_in, :channel]
 
+# User Can Sign In
   def index
-    @channels = Channel.all
     @users = User.all
   end
 
-  def enter_chat
+# Signs in
+  def user_sign_in
+    session[:current_user] = @user.id
+
+    redirect_to user_home_path(@user)
+  end
+
+# Enters Channel Selection
+  def user_home
+    @channels = Channel.all
+  end
+
+# Signs in to channel
+  def channel_sign_in
     Message.create message: "#{@user.name} HAS ENTERED THE CHANNEL!",
                     user_id: User.first.id,
                     channel_id: @channel.id
 
-    redirect_to chat_path(@channel, @user)
+    redirect_to channel_path(@channel, @user)
   end
 
-  def chat
-    @channel = Channel.find(params[:channel])
-    @user = User.find(params[:user])
-    @messages = @channel.messages.sort_by &:date
-
+# Enters Channel
+  def channel
+    @channels = Channel.all
     @message = Message.new
-
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:user])
+  end
+
   def setup_chat
     @channel = Channel.find(params[:channel])
-    @user = User.find(params[:user])
+    @user = User.find(session[:current_user])
     @messages = @channel.messages.sort_by &:date
   end
 
